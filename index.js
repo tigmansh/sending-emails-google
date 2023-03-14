@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
  })
   app.post("/send-email", (req, res) => {
     let mailOptions = {
-      from: req.body.email,
+      from: `${req.body.name} <${req.body.email}>`,
       to: "gargtigmanshu@gmail.com",
       subject: req.body.subject,
       text: req.body.message,
