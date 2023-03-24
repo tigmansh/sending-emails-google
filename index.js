@@ -9,13 +9,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
   res.send("home page !");
  })
   app.post("/send-email", (req, res) => {
+
     let mailOptions = {
-      from: `${req.body.name} <${req.body.email}>`,
+      from: `${req.body.name}`,
       to: "gargtigmanshu@gmail.com",
-      subject: req.body.subject,
       text: req.body.message,
     };
-  
+
     // send email
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
@@ -23,8 +23,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
        
         res.send("Error sending email");
       } else {
-        console.log("Email sent: " + info.response);
-        
         res.send("Email sent successfully");
       }
     });
